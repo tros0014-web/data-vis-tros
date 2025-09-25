@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>TR Homework week 9 </title>
+
+    <script src="https://cdn.jsdelivr.net/npm/vega@5.20.2"></script>
+    <script src="https://cdn.jsdelivr.net/npm/vega-lite@5.1.0"></script>
+    <script src="https://cdn.jsdelivr.net/npm/vega-embed@6.17.0"></script>
+
+    <!-- JavaScript emdedding, super short so just storing inside HTML -->
+    <script>
+        vegaEmbed("#map_div ", "major_map.vg.json").then(function(result) 
+        {        }).catch(console.error);
+
+    </script>
+
+</head>
+
+<body>
+    <h1> BOM Severe storms in Australia</h1>
+    
+    <p> This map only shows storms which have caused injury.</p>
+
+    <div id="map_div">
+        <p> There should be a big ol map here </p>
+    </div>
+    
+</body>
+
+</html>
