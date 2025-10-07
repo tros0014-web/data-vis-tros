@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>TR Homework week 10 </title>
+
+    <script src="https://cdn.jsdelivr.net/npm/vega@5.20.2"></script>
+    <script src="https://cdn.jsdelivr.net/npm/vega-lite@5.1.0"></script>
+    <script src="https://cdn.jsdelivr.net/npm/vega-embed@6.17.0"></script>
+
+    <!-- JavaScript emdedding, super short so just storing inside HTML -->
+    <script>
+        vegaEmbed("#map_div ", "major_map.vg.json").then(function(result) 
+        {        }).catch(console.error);
+
+         vegaEmbed("#bar_div ", "major_bar.vg.json").then(function(result) 
+        {        }).catch(console.error);
+
+    </script>
+
+    <!-- Pure CSS library-->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/purecss@3.0.0/build/pure-min.css" integrity="sha384-X38yfunGUhNzHpBaEBsWLO+A0HDYOQi8ufWDkZ0k9e0eXz/tH3II7uKZ9msv++Ls" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/purecss@3.0.0/build/grids-responsive-min.css" />
+
+</head>
+
+<body>
+    <h1> Severe storms in Australia</h1>
+    
+    <p> These charts only show storms which have caused injury.</p>
+
+    <div class="pure-g">
+
+        <div id="map_div" class=""pure-u-1-2>
+            <p> There should be a big ol map here </p>
+        </div>
+
+        <div id="bar_div"  class=""pure-u-1-2>
+            <p> There should be a bar chart here</p>
+        </div>
+
+    </div>
+
+    <p> Data sourced from the Bureau of Meteorology, Severe Storms Archive </p>
+    <a href = "https://www.bom.gov.au/australia/stormarchive/"> Available here</a>
+    
+</body>
+
+</html>

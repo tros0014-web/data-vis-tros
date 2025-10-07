@@ -1,0 +1,70 @@
+{
+    "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+    "title" : "Wind storms, 1980 to 2025",
+
+    "params" : [
+        {
+            "name" : "startYear",
+            "value" : 1980,
+            "bind" : {
+                "input" : "range", "min" : 1980, "max" : 2020, "step" : 5,
+                "name" : "Start: "
+            }
+        },
+        
+        {
+            "name" : "endYear",
+            "value" : 2025,
+            "bind" : {
+                "input" : "range", "min" : 1985, "max" : 2025, "step" : 5,
+                "name" : "End: "
+            }
+        }
+    ],
+
+
+
+    "layer" : [
+        {
+            "data" : {
+                "url" : "data/Inj wind 80-25 Aus.csv"
+            },
+
+                "transform" : [
+                {   "filter" : "datum.Year > startYear" },
+                {   "filter" : "datum.Year < endYear"  }
+            ],
+
+            "mark" : "bar",
+
+            "encoding" : {
+                "x" : { 
+                    "field" : "State", "type" : "nominal", "title" : "State"},
+                "y" : { 
+                    "field" : "Number of injuries", "type" : "quantitative"},
+                
+                "tooltip" : [
+                    {"field" : "State", "type" : "nominal"},
+                    {"field" : "Year", "type" : "ordinal"},
+                    {"field" : "Number of injuries", "type" : "quantitative"},
+                    {"field" : "Max Gust speed", "type" : "quantitative"}
+                ]
+            }
+        },
+
+        {
+            "mark" : {
+                "type" : "text",
+                "text" : ["South Australia (SA) had the",
+                        "most wind injuries overall."],
+                "align" : "center",
+                "x" : "width",
+                "dy" : -50,
+                "dx" : 20
+            },
+            "data" : {
+                "values" : [{}]
+            } 
+        }        
+    ]
+}
