@@ -1,0 +1,59 @@
+{
+    "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+   	"title": { "text": "Wind storms, 1980 to 2025" },
+    "projection" : {"type" : "equirectangular"},
+
+    "width": 600,
+    "height": 400,
+
+    "layer" : [ 
+        {
+            "data" : {
+                "url" : "data/ne_50m_state+grid_AUS.json",
+                "format" : {"type" : "topojson", "feature" :"ne_50m_admin_1_states_provinces" }            
+            },
+            "mark" : {"type" : "geoshape", "fill" : "gray", "stroke": "black"}
+        },
+        {
+            "data" : {
+                "url" : "data/ne_50m_state+grid_AUS.json",
+                "format" : {"type" : "topojson", "feature" :"ne_50m_graticules_10" }            
+            },
+            "mark" : {"type" : "geoshape", "fill" : null, "stroke": "lightgray"}
+        },
+        {
+            "data" : {
+                "url" : "data/Inj wind 80-25 Aus.csv"
+            },
+
+            "mark" : "circle",
+
+            "encoding" : {
+                "longitude" : {"field" : "Longitude", "type" :"quantitative"},
+                "latitude" : {"field" : "Latitude", "type" :"quantitative"},
+                "size" : {"field" : "Number of injuries", "type" :"quantitative",
+                    "scale" : {
+                        "type" : "threshold",
+                        "domain" : [2, 5, 10],
+                        "range" : [20, 50, 125, 300]    
+                    },
+                    "legend" : {
+                        "fillColor" : "gray",
+                        "padding" : 15,
+                        "titleColor" : "white",
+                        "labelColor" : "white"
+                    }
+                },
+                "color" : {"field" : "Number of injuries", "type" : "quantitative",
+                    "scale" : { 
+                        "type" : "threshold",
+                        "domain" : [2, 5, 10],    
+                        "range" : ["#ffffb2", "#fecc5c", "#fd8d3c", "#ff0000"]
+                    }             
+                },
+                "opacity" : {"value" : 0.6}                
+            }
+        }        
+
+    ]
+}        
